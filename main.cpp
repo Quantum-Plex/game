@@ -45,28 +45,28 @@ int main(int argc, char* argv[])
 
     // Game loop
     while (true) {
+        // Game states & events
+        if (plex.prev_state != plex.state) {
+            GameTextState starter;
+            switch (plex.state) {
+                case STATE_START_ROOM:
+                    starter = SURROUNDING_START_ROOM_STARTER;
+                    break;
+            }
+            std::cout << "[*] " << GameText.at(starter);
+
+            plex.prev_state = plex.state;
+        }
+
         while ((line = linenoise("> ")) != NULL) {
             // Process lines
             if (*line) {
-                for (it = commandMap.begin(); it != commandMap.end(); ++it) {
-                    if (!strcmp(it->first, line)) {
+                for (it = commandMap.begin(); it != commandMap.end(); ++it)
+                    if (!strcmp(it->first, line))
                         it->second();
-                        break;
-                    }
-                }
-
-                // Game states & events (FIXME)
-                if (plex.prev_state != plex.state) {
-                    GameTextState starter;
-                    switch (plex.state) {
-                        case STATE_START_ROOM:
-                            starter = SURROUNDING_START_ROOM_STARTER;
-                            break;
-                    }
-                    std::cout << GameText.at(starter) << std::endl;
-                }
             }
             free(line);
+            break;
         }
     }
 
