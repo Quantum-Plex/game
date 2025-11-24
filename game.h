@@ -6,6 +6,7 @@
 
 enum GameState {
     STATE_START_ROOM = 1,
+    STATE_START_ROOM_PUZZLE,
 };
 
 class Game {
@@ -25,9 +26,6 @@ public:
 extern Game plex; /* global */
 
 void game_state_loop();
-void game_w();
-void game_a();
-void game_s();
-void game_d();
+void game_single_input_handler(char *key);
 
 #endif // GAME_H

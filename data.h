@@ -19,6 +19,11 @@ enum GameTextState {
     SURROUNDING_START_ROOM_CONDA,
     SURROUNDING_START_ROOM_CONDS,
     SURROUNDING_START_ROOM_CONDD,
+
+    /* Start room puzzle */
+    SURROUNDING_START_ROOM_PUZZLE_STARTER,
+    SURROUNDING_START_ROOM_PUZZLE1,
+    SURROUNDING_START_ROOM_PUZZLE2,
 };
 
 const std::map<GameTextState, std::string> GameText = {
@@ -35,7 +40,7 @@ const std::map<GameTextState, std::string> GameText = {
                            "scattered in the room. Your creation had opened up a galactic white hole, spiling\n"
                            "out animate objects of alien origin. You were sure your time would be limited if\n"
                            "you do not escape from the plex.\n\n"
-                           "Treat me like your eyes and hands, and direct me with commands, such as get/take\n"
+                           "Treat me like your eyes and hands, and direct me with commands, such as \"take\"\n"
                            "or look. Move around by entering directions in w/a/s/d.\n"},
     {SURROUNDING_START_ROOM_STARTER, "You awoke in the aftermath of the explosion.\n"},
     {SURROUNDING_START_ROOM_CONDWI, "There is a door in front of you, but it appears you are missing something.\n"},
@@ -43,6 +48,9 @@ const std::map<GameTextState, std::string> GameText = {
     {SURROUNDING_START_ROOM_CONDA, "A portrait of the president of Quantum Plex hung beside the logo.\n"},
     {SURROUNDING_START_ROOM_CONDS, "You shouldn't come here, monstors are escaping the white hole.\n"},
     {SURROUNDING_START_ROOM_CONDD, "You obtained the puzzle map, use it to unlock the door.\n"},
+    {SURROUNDING_START_ROOM_PUZZLE_STARTER, "\n"},
+    {SURROUNDING_START_ROOM_PUZZLE1, "\n"},
+    {SURROUNDING_START_ROOM_PUZZLE2, "\n"},
 };
 
 #endif // PLEX_H

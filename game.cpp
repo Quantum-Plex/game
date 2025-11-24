@@ -8,52 +8,35 @@
 
 Game plex; /* global */
 
-void game_w() {
+void game_single_input_handler(char *key) {
     GameTextState buf;
 
     switch (plex.state) {
         case STATE_START_ROOM:
-            if (plex.starter_room.puzzle_obtained)
-                buf = SURROUNDING_START_ROOM_CONDWO;
-            else
-                buf = SURROUNDING_START_ROOM_CONDWI;
+            switch (*key) {
+                case 'w':
+                    if (plex.starter_room.puzzle_obtained)
+                        buf = SURROUNDING_START_ROOM_CONDWO;
+                    else
+                        buf = SURROUNDING_START_ROOM_CONDWI;
+                    break;
+                case 'a':
+                    buf = SURROUNDING_START_ROOM_CONDA;
+                    plex.starter_room.portrait_gazed = true;
+                    break;
+                case 's':
+                    buf = SURROUNDING_START_ROOM_CONDS;
+                    break;
+                case 'd':
+                    buf = SURROUNDING_START_ROOM_CONDD;
+                    plex.starter_room.puzzle_obtained = true;
+                    break;
+            }
+            break;
+        case STATE_START_ROOM_PUZZLE:
             break;
     }
-    std::cout << GameText.at(buf);
-}
 
-void game_a() {
-    GameTextState buf;
-
-    switch (plex.state) {
-        case STATE_START_ROOM:
-            buf = SURROUNDING_START_ROOM_CONDA;
-            plex.starter_room.portrait_gazed = true;
-            break;
-    }
-    std::cout << GameText.at(buf);
-}
-
-void game_s() {
-    GameTextState buf;
-
-    switch (plex.state) {
-        case STATE_START_ROOM:
-            buf = SURROUNDING_START_ROOM_CONDS;
-            break;
-    }
-    std::cout << GameText.at(buf);
-}
-
-void game_d() {
-    GameTextState buf;
-
-    switch (plex.state) {
-        case STATE_START_ROOM:
-            buf = SURROUNDING_START_ROOM_CONDD;
-            plex.starter_room.puzzle_obtained = true;
-            break;
-    }
     std::cout << GameText.at(buf);
 }
 
@@ -65,6 +48,9 @@ void game_state_loop() {
         switch (plex.state) {
             case STATE_START_ROOM:
                 buf = SURROUNDING_START_ROOM_STARTER;
+                break;
+            case STATE_START_ROOM_PUZZLE:
+                // TODO: Chance calculations
                 break;
         }
         std::cout << "[*] " << GameText.at(buf);

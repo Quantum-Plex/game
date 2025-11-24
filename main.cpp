@@ -9,23 +9,23 @@
 #include "data.h"
 #include "game.h"
 
-void cmd_exit() {
+void cmd_exit(char * /* unused */) {
     exit(0);
 }
 
-std::map<const char *, void (*)()> commandMap = {
+std::map<const char *, void (*)(char*)> commandMap = {
     { "exit", &cmd_exit },
-    { "w", &game_w },
-    { "a", &game_a },
-    { "s", &game_s },
-    { "d", &game_d },
+    { "w", &game_single_input_handler },
+    { "a", &game_single_input_handler },
+    { "s", &game_single_input_handler },
+    { "d", &game_single_input_handler },
 };
 
 int main(int argc, char* argv[])
 {
     char singleUserAnswer;
     char *line;
-    std::map<const char *, void (*)()>::iterator it;
+    std::map<const char *, void (*)(char *)>::iterator it;
 
     // Pre-loop texts
     std::cout << GameText.at(SPLASH) << std::endl;
@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
             if (*line) {
                 for (it = commandMap.begin(); it != commandMap.end(); ++it)
                     if (!strcmp(it->first, line))
-                        it->second();
+                        it->second(line);
             }
             free(line);
             break;
