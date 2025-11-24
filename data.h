@@ -46,7 +46,8 @@ const std::map<GameTextState, std::string> GameText = {
     {SURROUNDING_START_ROOM_CONDWI, "There is a door in front of you, but it appears you are missing something.\n"},
     {SURROUNDING_START_ROOM_CONDWO, "The door is locked, you have to attempt a challenge to unlock.\n"},
     {SURROUNDING_START_ROOM_CONDA, "A portrait of the president of Quantum Plex hung beside the logo.\n"},
-    {SURROUNDING_START_ROOM_CONDS, "You shouldn't come here, monstors are escaping the white hole.\n"},
+    {SURROUNDING_START_ROOM_CONDS, "You shouldn't come here, monstors are escaping the white hole. Fortunately,\n"
+                                   "you are still shielded by a tempered glass door.\n"},
     {SURROUNDING_START_ROOM_CONDD, "You obtained the puzzle map, use it to unlock the door.\n"},
     {SURROUNDING_START_ROOM_PUZZLE_STARTER, "\n"},
     {SURROUNDING_START_ROOM_PUZZLE1, "\n"},
