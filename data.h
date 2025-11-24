@@ -16,7 +16,8 @@ enum GameTextState {
     SURROUNDING_START_ROOM_STARTER,
     SURROUNDING_START_ROOM_CONDWI,
     SURROUNDING_START_ROOM_CONDWO,
-    SURROUNDING_START_ROOM_CONDA,
+    SURROUNDING_START_ROOM_CONDA1,
+    SURROUNDING_START_ROOM_CONDA2,
     SURROUNDING_START_ROOM_CONDS,
     SURROUNDING_START_ROOM_CONDD,
 
@@ -45,7 +46,8 @@ const std::map<GameTextState, std::string> GameText = {
     {SURROUNDING_START_ROOM_STARTER, "You awoke in the aftermath of the explosion.\n"},
     {SURROUNDING_START_ROOM_CONDWI, "There is a door in front of you, but it appears you are missing something.\n"},
     {SURROUNDING_START_ROOM_CONDWO, "The door is locked, you have to attempt a challenge to unlock.\n"},
-    {SURROUNDING_START_ROOM_CONDA, "A portrait of the president of Quantum Plex hung beside the logo.\n"},
+    {SURROUNDING_START_ROOM_CONDA1, "A portrait of the president of Quantum Plex hung beside the logo.\n"},
+    {SURROUNDING_START_ROOM_CONDA2, "Graffiti on the wall: \"Qubits for the future\"\n"},
     {SURROUNDING_START_ROOM_CONDS, "You shouldn't come here, monstors are escaping the white hole. Fortunately,\n"
                                    "you are still shielded by a tempered glass door.\n"},
     {SURROUNDING_START_ROOM_CONDD, "You obtained the puzzle map, use it to unlock the door.\n"},

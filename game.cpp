@@ -1,6 +1,7 @@
 // Copyright (c) 2025 Quantum Plex Authors
 // SPDX-License-Identifier: MIT
 
+#include <cstdlib>
 #include <iostream>
 
 #include "data.h"
@@ -21,7 +22,10 @@ void game_single_input_handler(char *key) {
                         buf = SURROUNDING_START_ROOM_CONDWI;
                     break;
                 case 'a':
-                    buf = SURROUNDING_START_ROOM_CONDA;
+                    if (rand() % 101 >= 90) // 10% chance
+                        buf = SURROUNDING_START_ROOM_CONDA2;
+                    else
+                        buf = SURROUNDING_START_ROOM_CONDA1;
                     plex.starter_room.portrait_gazed = true;
                     break;
                 case 's':
