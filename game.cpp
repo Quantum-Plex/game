@@ -16,10 +16,12 @@ void game_single_input_handler(char *key) {
         case STATE_START_ROOM:
             switch (*key) {
                 case 'w':
-                    if (plex.starter_room.puzzle_obtained)
+                    if (plex.starter_room.puzzle_obtained) {
                         buf = SURROUNDING_START_ROOM_CONDWO;
-                    else
+                        plex.state = STATE_START_ROOM_PUZZLE;
+                    } else {
                         buf = SURROUNDING_START_ROOM_CONDWI;
+                    }
                     break;
                 case 'a':
                     if (rand() % 101 >= 90) // 10% chance
@@ -45,7 +47,7 @@ void game_single_input_handler(char *key) {
 }
 
 void game_state_loop() {
-    GameTextState buf;
+    GameTextState buf, buf1 = NONE;
 
     // Show starter text for new states
     if (plex.prev_state != plex.state) {
@@ -54,10 +56,16 @@ void game_state_loop() {
                 buf = SURROUNDING_START_ROOM_STARTER;
                 break;
             case STATE_START_ROOM_PUZZLE:
-                // TODO: Chance calculations
+                buf = SURROUNDING_START_ROOM_PUZZLE_STARTER;
+                if (rand() % 101 >= 50) // 50% chance
+                    buf1 = SURROUNDING_START_ROOM_PUZZLE1;
+                else
+                    buf1 = SURROUNDING_START_ROOM_PUZZLE2;
                 break;
         }
         std::cout << "[*] " << GameText.at(buf);
+        if (buf1 != NONE)
+            std::cout << GameText.at(buf1);
 
         plex.prev_state = plex.state;
     }
