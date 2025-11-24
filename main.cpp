@@ -7,15 +7,7 @@
 
 #include "linenoise/linenoise.h"
 #include "data.h"
-
-class Game {
-public:
-    GameState state = STATE_START_ROOM;
-    GameState prev_state;
-
-    bool instructions_asked;
-};
-Game plex; /* global */
+#include "game.h"
 
 void cmd_exit() {
     exit(0);
@@ -23,6 +15,10 @@ void cmd_exit() {
 
 std::map<const char *, void (*)()> commandMap = {
     { "exit", &cmd_exit },
+    { "w", &game_w },
+    { "a", &game_a },
+    { "s", &game_s },
+    { "d", &game_d },
 };
 
 int main(int argc, char* argv[])
@@ -45,18 +41,7 @@ int main(int argc, char* argv[])
 
     // Game loop
     while (true) {
-        // Game states & events
-        if (plex.prev_state != plex.state) {
-            GameTextState starter;
-            switch (plex.state) {
-                case STATE_START_ROOM:
-                    starter = SURROUNDING_START_ROOM_STARTER;
-                    break;
-            }
-            std::cout << "[*] " << GameText.at(starter);
-
-            plex.prev_state = plex.state;
-        }
+        game_state_loop();
 
         while ((line = linenoise("> ")) != NULL) {
             // Process lines

@@ -2,5 +2,5 @@
 
 mkdir -p build
 clang -Wall -Werror -lstdc++ \
-    main.cpp linenoise/linenoise.c \
+    main.cpp game.cpp linenoise/linenoise.c \
     -o build/plex

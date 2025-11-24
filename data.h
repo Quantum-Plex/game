@@ -7,10 +7,6 @@
 #include <string>
 #include <map>
 
-enum GameState {
-    STATE_START_ROOM = 1,
-};
-
 enum GameTextState {
     SPLASH,
     WELCOME_PROMPT,
@@ -18,10 +14,11 @@ enum GameTextState {
 
     /* Start room */
     SURROUNDING_START_ROOM_STARTER,
-    SURROUNDING_START_ROOM_COND1,
-    SURROUNDING_START_ROOM_COND2,
-    SURROUNDING_START_ROOM_COND3,
-    SURROUNDING_START_ROOM_COND4,
+    SURROUNDING_START_ROOM_CONDWI,
+    SURROUNDING_START_ROOM_CONDWO,
+    SURROUNDING_START_ROOM_CONDA,
+    SURROUNDING_START_ROOM_CONDS,
+    SURROUNDING_START_ROOM_CONDD,
 };
 
 const std::map<GameTextState, std::string> GameText = {
@@ -39,9 +36,13 @@ const std::map<GameTextState, std::string> GameText = {
                            "out animate objects of alien origin. You were sure your time would be limited if\n"
                            "you do not escape from the plex.\n\n"
                            "Treat me like your eyes and hands, and direct me with commands, such as get/take\n"
-                           "or look. Move around by entering directions in WASD.\n"},
+                           "or look. Move around by entering directions in w/a/s/d.\n"},
     {SURROUNDING_START_ROOM_STARTER, "You awoke in the aftermath of the explosion.\n"},
-    {SURROUNDING_START_ROOM_COND1, "\n"},
+    {SURROUNDING_START_ROOM_CONDWI, "There is a door in front of you, but it appears you are missing something.\n"},
+    {SURROUNDING_START_ROOM_CONDWO, "The door is locked, you have to attempt a challenge to unlock.\n"},
+    {SURROUNDING_START_ROOM_CONDA, "A portrait of the president of Quantum Plex hung beside the logo.\n"},
+    {SURROUNDING_START_ROOM_CONDS, "You shouldn't come here, monstors are escaping the white hole.\n"},
+    {SURROUNDING_START_ROOM_CONDD, "You obtained the puzzle map, use it to unlock the door.\n"},
 };
 
 #endif // PLEX_H
